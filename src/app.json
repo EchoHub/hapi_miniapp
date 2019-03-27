@@ -1,0 +1,12 @@
+{
+	"pages": [
+		"pages/home/index"
+	],
+	"window": {
+		"defaultTitle": "哈皮小程序",
+		"pullRefresh": "false",
+		"allowsBounceVertical": "yes",
+		"titleBarColor": "#ffffff"
+	},
+	"tabBar": {}
+}

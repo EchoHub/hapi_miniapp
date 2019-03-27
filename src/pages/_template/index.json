@@ -1,0 +1,6 @@
+{
+    "defaultTitle": "",
+    "usingComponents": {
+        "hp-form": "/components/hp-form/index"
+    }
+}
