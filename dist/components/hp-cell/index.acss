@@ -1,0 +1,21 @@
+.hp-cell {
+  display: flex;
+  flex-direction: column;
+  padding: 10rpx;
+}
+.hp-cell-header {
+  display: flex;
+  justify-content: space-between;
+}
+.hp-cell-header .label {
+  font-size: 28rpx;
+}
+.hp-cell-content {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #aaa;
+  overflow-wrap: break-word;
+}
+.hp-cell:not(:last-child) {
+  border-bottom: 2rpx solid #eeeded;
+}

@@ -1,0 +1,5 @@
+.hp-card {
+  background: #ffffff;
+  margin: 0rpx;
+  padding: 0rpx;
+}

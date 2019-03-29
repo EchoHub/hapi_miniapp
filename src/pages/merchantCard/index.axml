@@ -1,0 +1,17 @@
+<view className="merchantcard">
+    <view className="title">基本用法</view>
+    <hp-merchantcard
+        title="新白鹿餐厅"
+        tip="积分买单"
+        descrption="杭州市西湖区文一西路290号"
+    ></hp-merchantcard>
+    <view className="title">高级用法</view>
+    <hp-merchantcard
+        title="新白鹿餐厅"
+        tip="积分买单"
+        descrption="杭州市西湖区文一西路290号"
+        control={{true}}
+    >
+        <button className="btn-gobuy">去买单</button>
+    </hp-merchantcard>
+</view>

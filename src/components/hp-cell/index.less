@@ -1,3 +1,22 @@
+@border-color: #eeeded;
 .hp-cell {
-    
+    display: flex;
+    flex-direction: column;
+    padding: 10rpx;
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        .label {
+            font-size: 28rpx;
+        }
+    }
+    &-content {
+        margin-top: 10rpx;
+        font-size: 26rpx;
+        color: #aaa;
+        overflow-wrap: break-word;
+    }
+    &:not(:last-child) {
+        border-bottom: 2rpx solid @border-color;
+    }
 }

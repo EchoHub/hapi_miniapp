@@ -1,0 +1,12 @@
+<view className={{className}}>
+    <view className="hp-merchantcard-logo">
+        <image src={{href}} mode="scaleToFill" />
+    </view>
+      <view className="hp-flex hp-merchantcard-content">
+        <view className="hp-merchantcard-header"><text className="hp-merchantcard-title">{{title}}</text> <text className="tipbtn">{{tip}}</text></view>
+        <view className="hp-merchantcard-footer"><text className="hp-merchantcard-title-sub">{{descrption}}</text></view>
+      </view>
+      <view a:if={{control}} className="hp-merchantcard-right">
+        <slot />
+      </view>
+</view>

@@ -1,0 +1,6 @@
+{
+    "defaultTitle": "MerchantCard 商家卡片",
+    "usingComponents": {
+        "hp-merchantcard": "/components/hp-merchantCard/index"
+    }
+}

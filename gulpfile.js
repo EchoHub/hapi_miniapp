@@ -30,7 +30,7 @@ const jsonmin = require('gulp-jsonmin')
 const htmlmin = require('gulp-htmlmin')
 
 const glob = require('./.build/default')
-;require('colors')
+  ; require('colors')
 
 const knownOptions = {
   // string: 'env',
@@ -44,10 +44,11 @@ gulp.task('clean', async function () {
   const end = +new Date() / 1000
 })
 gulp.task('less:compile', async function () {
-  const { lessDirs } = glob['common']
+  // const { lessDirs } = glob['common']
+  const { lessDirs } = glob.updateEntries()
   // const { env } = minimist(process.argv.slice(2), knownOptions)
   return lessDirs.map((dir, index) => {
-    const compPath = dir.src[0].replace(/[\w\/\-\.]+components\/([0-9a-zA-Z_\-\.]+)\/index\.[a-z]+$/, "$1")
+    const compPath = dir.src.replace(/[\w\/\-\.]+components\/([0-9a-zA-Z_\-\.]+)\/index\.[a-z]+$/, "$1")
     return pump([
       gulp.src(dir.src),
       less({
@@ -57,16 +58,17 @@ gulp.task('less:compile', async function () {
       rename({
         extname: '.acss'
       }),
-      gulp.dest(`${dir.dest}${dir.src[0].indexOf("components/") > -1 ? `/${compPath}` : ""}`)
+      gulp.dest(`${dir.dest}${dir.src.indexOf("components/") > -1 ? `/${compPath}` : ""}`)
     ], function (err) {
     })
   })
 })
 gulp.task('axml:compile', async function () {
-  const { axmlDirs } = glob['common']
-  const { env } = minimist(process.argv.slice(2), knownOptions)
+  // const { axmlDirs } = glob['common']
+  const { axmlDirs } = glob.updateEntries()
+  // const { env } = minimist(process.argv.slice(2), knownOptions)
   axmlDirs.map((dir, index) => {
-    const compPath = dir.src[0].replace(/[\w\/\-\.]+components\/([0-9a-zA-Z_\-\.]+)\/index\.[a-z]+$/, "$1")
+    const compPath = dir.src.replace(/[\w\/\-\.]+components\/([0-9a-zA-Z_\-\.]+)\/index\.[a-z]+$/, "$1")
     return pump([
       gulp.src(dir.src),
       rename({
@@ -76,20 +78,21 @@ gulp.task('axml:compile', async function () {
       rename({
         extname: '.axml'
       }),
-      gulp.dest(`${dir.dest}${dir.src[0].indexOf("components/") > -1 ? `/${compPath}` : ""}`)
+      gulp.dest(`${dir.dest}${dir.src.indexOf("components/") > -1 ? `/${compPath}` : ""}`)
     ], function (err) {
     })
   })
 })
 gulp.task('json:compile', async function () {
-  const { jsonDirs } = glob['common']
-  const { env } = minimist(process.argv.slice(2), knownOptions)
+  // const { jsonDirs } = glob['common']
+  const { jsonDirs } = glob.updateEntries()
+  // const { env } = minimist(process.argv.slice(2), knownOptions)
   jsonDirs.map((dir, index) => {
-    const compPath = dir.src[0].replace(/[\w\/\-\.]+components\/([0-9a-zA-Z_\-\.]+)\/index\.[a-z]+$/, "$1")
+    const compPath = dir.src.replace(/[\w\/\-\.]+components\/([0-9a-zA-Z_\-\.]+)\/index\.[a-z]+$/, "$1")
     return pump([
       gulp.src(dir.src),
       gulpif(env === 'production', jsonmin()),
-      gulp.dest(`${dir.dest}${dir.src[0].indexOf("components/") > -1 ? `/${compPath}` : ""}`)
+      gulp.dest(`${dir.dest}${dir.src.indexOf("components/") > -1 ? `/${compPath}` : ""}`)
     ], function (err) {
     })
   })
@@ -104,7 +107,7 @@ gulp.task("build", gulp.series("clean", gulp.series(gulp.parallel(["less:compile
 })))
 gulp.task('js:compile', async function () {
   const { jsDirs } = glob['common']
-  const { env } = minimist(process.argv.slice(2), knownOptions)
+  // const { env } = minimist(process.argv.slice(2), knownOptions)
   jsDirs.map(dir => {
     return pump([
       gulp.src(dir.src),
@@ -122,7 +125,8 @@ gulp.task('js:compile', async function () {
 })
 gulp.task("build:dev", gulp.series("clean", gulp.parallel(["less:compile", "axml:compile", "json:compile", "assets:compile", "js:compile"])))
 gulp.task('server:watch', gulp.series('build:dev', function () {
-  const { jsDirs, lessDirs, axmlDirs, jsonDirs, imageSrc } = glob['common']
+  const { jsDirs, imageSrc } = glob['common']
+  const { lessDirs, axmlDirs, jsonDirs } = glob.updateEntries()
   gulpwatch(imageSrc, assetsCompile)
   const _lessDirs = lessDirs.map(dir => {
     return dir.src
@@ -135,7 +139,7 @@ gulp.task('server:watch', gulp.series('build:dev', function () {
   const _jsonDirs = jsonDirs.map(dir => {
     return dir.src
   })
-  gulp.watch(_jsonDirs, gulp.series('json:compile'))
+  gulp.watch(_jsonDirs, gulp.series('json:compile', gulp.parallel(["less:compile", "axml:compile", "js:compile"])))
 
   const _jsDirs = jsDirs.map(dir => {
     return dir.src

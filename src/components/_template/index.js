@@ -1,3 +1,4 @@
+import Utils from "./../utils/utils"
 Component({
     mixins: [],
     data: {},

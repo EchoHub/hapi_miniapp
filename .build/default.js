@@ -21,23 +21,66 @@ function findSync(startPath) {
     finder(startPath);
     return entries
 }
-const entries = findSync('src/pages');
-let a_componentsEntries = []
-let j_componentsEntries = []
-let l_componentsEntries = []
-for(const item in entries) {
-    const jsonPath = path.resolve(__dirname, `./../${entries[item]}`).replace(/\.js$/, ".json")
-    const json = JSON.parse(fs.readFileSync(jsonPath, { encoding: 'utf-8'}));
-    const usingComponents = json.usingComponents || {};
-    for(const ite in usingComponents) {
-        const name = usingComponents[ite].replace(/^\//, "")
-        entries[`components/${ite}/index`] = `./src/${name}.js`
-        a_componentsEntries.push(path.resolve(__dirname, `./../src/${name}.axml`))
-        j_componentsEntries.push(path.resolve(__dirname, `./../src/${name}.json`))
-        l_componentsEntries.push(path.resolve(__dirname, `./../src/${name}.less`))
+function updateEntries() {
+    let entries = findSync('src/pages');
+    let a_componentsEntries = []
+    let j_componentsEntries = []
+    let l_componentsEntries = []
+    for (const item in entries) {
+        const jsonPath = path.resolve(__dirname, `./../${entries[item]}`).replace(/\.js$/, ".json")
+        const json = JSON.parse(fs.readFileSync(jsonPath, { encoding: 'utf-8' }));
+        const usingComponents = json.usingComponents || {};
+        for (const ite in usingComponents) {
+            const name = usingComponents[ite].replace(/^\//, "")
+            entries[`components/${ite}/index`] = `./src/${name}.js`
+            a_componentsEntries.push({
+                src: path.resolve(__dirname, `./../src/${name}.axml`),
+                dest: path.join(destPath, "components")
+            })
+            j_componentsEntries.push({
+                src: path.resolve(__dirname, `./../src/${name}.json`),
+                dest: path.join(destPath, "components")
+            })
+            l_componentsEntries.push({
+                src: path.resolve(__dirname, `./../src/${name}.less`),
+                dest: path.join(destPath, "components")
+            })
+        }
+    }
+    entries["app"] = `./src/app.js`
+    entries[`components/_constants/index`] = `./src/components/_constants/index.js`;
+    entries[`components/utils/utils`] = `./src/components/utils/utils.js`;
+    return {
+        entries,
+        jsonDirs: [
+            {
+                src: path.resolve(srcPath, "app.json"),
+                dest: destPath,
+            },
+            {
+                src: path.resolve(srcPath, "pages/**/*.json"),
+                dest: path.join(destPath, "pages"),
+            }
+        ].concat(j_componentsEntries),
+        axmlDirs: [
+            {
+                src: path.resolve(srcPath, "pages/**/*.axml"),
+                dest: path.join(destPath, "pages"),
+            }
+        ].concat(a_componentsEntries),
+        lessDirs: [
+            {
+                src: path.resolve(srcPath, "app.less"),
+                dest: destPath,
+            },
+            {
+                src: path.resolve(srcPath, "pages/**/*.less"),
+                dest: path.join(destPath, "pages"),
+            }
+        ].concat(l_componentsEntries)
     }
 }
-entries["app"] = `./src/app.js`
+const { entries, axmlDirs, jsonDirs, lessDirs} = updateEntries()
 module.exports = {
     entries: entries,
     common: {
@@ -56,41 +99,9 @@ module.exports = {
                 dest: path.join(destPath, "components"),
             }
         ],
-        jsonDirs: [
-            {
-                src: path.resolve(srcPath, "app.json"),
-                dest: destPath,
-            },
-            {
-                src: path.resolve(srcPath, "pages/**/*.json"),
-                dest: path.join(destPath, "pages"),
-            }
-        ].concat(j_componentsEntries.length ? [{
-            src: j_componentsEntries,
-            dest: path.join(destPath, "components"),
-        }]: []),
-        axmlDirs: [
-            {
-                src: path.resolve(srcPath, "pages/**/*.axml"),
-                dest: path.join(destPath, "pages"),
-            }
-        ].concat(a_componentsEntries.length ? [{
-            src: a_componentsEntries,
-            dest: path.join(destPath, "components"),
-        }] : []),
-        lessDirs: [
-            {
-                src: path.resolve(srcPath, "app.less"),
-                dest: destPath,
-            },
-            {
-                src: path.resolve(srcPath, "pages/**/*.less"),
-                dest: path.join(destPath, "pages"),
-            }
-        ].concat(l_componentsEntries.length ? [{
-            src: l_componentsEntries,
-            dest: path.join(destPath, "components"),
-        }] : []),
+        jsonDirs: jsonDirs,
+        axmlDirs: axmlDirs,
+        lessDirs: lessDirs,
         jsDirs: [
             {
                 src: path.resolve(srcPath, "app.js"),
@@ -110,5 +121,6 @@ module.exports = {
 
     },
     dev: {
-    }
+    },
+    updateEntries: updateEntries
 }

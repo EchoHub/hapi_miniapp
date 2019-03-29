@@ -1,3 +1,54 @@
 .home {
-    
+    margin: 0rpx;
+    padding: 0rpx;
+    padding-bottom: 80rpx;
+    background: #f5f3f3;
+    .hp-header {
+        padding: 80rpx;
+        padding-bottom: 60rpx;
+        text-align: center;
+        .hp-title {
+            font-size: 48rpx;
+            color: #000000;
+            font-weight: bolder;
+            transition: transform ease-in-out .3s;
+            transform: translateX(300px);
+            &.active {
+                transform: translateX(0);
+            }
+            &-sub {
+                margin-top: 20rpx;
+                color: #999999;
+                font-size: 24rpx;
+                transition: transform ease-in-out .3s;
+                transform: translateX(-300px);
+                &.active {
+                    transform: translateX(0);
+                }
+            }
+        }
+    }
+    .hp-content {
+        margin: 0 30rpx;
+        .hp-card {
+            margin-top: 20rpx;
+            border-radius: 4rpx;
+            &-title {
+                padding: 30rpx;
+                padding-bottom: 18rpx;
+                color: #000;
+                border-bottom: 2rpx solid #eeeded;
+                font-size: 30rpx;
+            }
+            &-content {
+                font-size: 26rpx;
+            }
+        }
+    }
+    .mh-30rpx {
+        margin: 0 30rpx;
+    }
+    .pv-30rpx {
+        padding: 30rpx 0;
+    }
 }

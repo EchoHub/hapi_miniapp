@@ -1,0 +1,71 @@
+.hp-merchantcard {
+  background: #ffffff;
+  padding: 20rpx;
+  border-radius: 8rpx;
+  display: flex;
+  position: relative;
+  margin-top: 20rpx;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+.hp-merchantcard-logo {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 4rpx;
+  background: #D8D8D8;
+  margin-right: 20rpx;
+}
+.hp-merchantcard-logo > image {
+  width: 100%;
+  height: 100%;
+}
+.hp-merchantcard-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hp-merchantcard-header {
+  margin-top: 10rpx;
+}
+.hp-merchantcard-footer {
+  margin-bottom: 20rpx;
+}
+.hp-merchantcard-title {
+  font-size: 32rpx;
+  color: #0D0505;
+  font-weight: bold;
+}
+.hp-merchantcard-title-sub {
+  color: #999999;
+  font-size: 24rpx;
+}
+.hp-merchantcard .tipbtn {
+  font-size: 24rpx;
+  margin-left: 20rpx;
+  display: inline-block;
+  padding: 4rpx 8rpx;
+  top: -4rpx;
+  position: relative;
+  color: #612501;
+  background: #FF9449;
+  border-radius: 4rpx;
+}
+.hp-merchantcard-right {
+  position: absolute;
+  right: 50rpx;
+  height: 100%;
+  text-align: center;
+}
+.hp-merchantcard-right > image {
+  width: 36rpx;
+  height: 36rpx;
+  display: inline-block;
+  position: relative;
+  top: 30rpx;
+}
+.hp-merchantcard .mile {
+  color: #FD7241;
+  font-size: 24rpx;
+  position: relative;
+  display: block;
+  top: 50rpx;
+}
