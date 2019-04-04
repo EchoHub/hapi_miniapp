@@ -39,14 +39,10 @@ const knownOptions = {
 const env = process.env.NODE_ENV;
 gulp.task('clean', async function () {
   const { destPath } = glob['common']
-  const start = +new Date() / 1000
   rimraf.sync(destPath)
-  const end = +new Date() / 1000
 })
 gulp.task('less:compile', async function () {
-  // const { lessDirs } = glob['common']
   const { lessDirs } = glob.updateEntries()
-  // const { env } = minimist(process.argv.slice(2), knownOptions)
   return lessDirs.map((dir, index) => {
     const compPath = dir.src.replace(/[\w\/\-\.]+components\/([0-9a-zA-Z_\-\.]+)\/index\.[a-z]+$/, "$1")
     return pump([
@@ -64,9 +60,7 @@ gulp.task('less:compile', async function () {
   })
 })
 gulp.task('axml:compile', async function () {
-  // const { axmlDirs } = glob['common']
   const { axmlDirs } = glob.updateEntries()
-  // const { env } = minimist(process.argv.slice(2), knownOptions)
   axmlDirs.map((dir, index) => {
     const compPath = dir.src.replace(/[\w\/\-\.]+components\/([0-9a-zA-Z_\-\.]+)\/index\.[a-z]+$/, "$1")
     return pump([
@@ -84,9 +78,7 @@ gulp.task('axml:compile', async function () {
   })
 })
 gulp.task('json:compile', async function () {
-  // const { jsonDirs } = glob['common']
   const { jsonDirs } = glob.updateEntries()
-  // const { env } = minimist(process.argv.slice(2), knownOptions)
   jsonDirs.map((dir, index) => {
     const compPath = dir.src.replace(/[\w\/\-\.]+components\/([0-9a-zA-Z_\-\.]+)\/index\.[a-z]+$/, "$1")
     return pump([
@@ -107,15 +99,10 @@ gulp.task("build", gulp.series("clean", gulp.series(gulp.parallel(["less:compile
 })))
 gulp.task('js:compile', async function () {
   const { jsDirs } = glob['common']
-  // const { env } = minimist(process.argv.slice(2), knownOptions)
   jsDirs.map(dir => {
     return pump([
       gulp.src(dir.src),
       babel(),
-      // eslint({
-      //   configFile: './.eslintrc',
-      //   fix: true
-      // }),
       eslint.format(),
       gulpif(env === 'production', uglify()),
       gulp.dest(dir.dest)
@@ -125,18 +112,18 @@ gulp.task('js:compile', async function () {
 })
 gulp.task("build:dev", gulp.series("clean", gulp.parallel(["less:compile", "axml:compile", "json:compile", "assets:compile", "js:compile"])))
 gulp.task('server:watch', gulp.series('build:dev', function () {
-  const { jsDirs, imageSrc } = glob['common']
-  const { lessDirs, axmlDirs, jsonDirs } = glob.updateEntries()
+  const { jsDirs, imageSrc, mixinDirs } = glob['common']
+  let { lessDirs, axmlDirs, jsonDirs } = glob.updateEntries()
   gulpwatch(imageSrc, assetsCompile)
-  const _lessDirs = lessDirs.map(dir => {
+  const _lessDirs = (env === "production" ? lessDirs: mixinDirs).map(dir => {
     return dir.src
   })
   gulp.watch(_lessDirs, gulp.series('less:compile'))
-  const _axmlDirs = axmlDirs.map(dir => {
+  const _axmlDirs = (env === "production" ? axmlDirs : mixinDirs).map(dir => {
     return dir.src
   })
   gulp.watch(_axmlDirs, gulp.series('axml:compile'))
-  const _jsonDirs = jsonDirs.map(dir => {
+  const _jsonDirs = (env === "production" ? jsonDirs : mixinDirs).map(dir => {
     return dir.src
   })
   gulp.watch(_jsonDirs, gulp.series('json:compile', gulp.parallel(["less:compile", "axml:compile", "js:compile"])))
@@ -311,5 +298,3 @@ function anazApis(api) {
     }
   })
 }
-
-// gulp.task('build:prod', gulp.series('clean', gulp.parallel('json:compile', 'axml:compile', 'less:compile', 'js:compile', 'assets:compile')))

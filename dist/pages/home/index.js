@@ -65,11 +65,6 @@ Page(_objectSpread({
         value: "",
         description: "",
         arrow: true
-      }, {
-        label: "Toast 轻提示",
-        value: "",
-        description: "",
-        arrow: true
       }]
     }, {
       title: "展示组件",
@@ -111,18 +106,14 @@ Page(_objectSpread({
         value: "",
         description: "",
         arrow: true
-      }, {
-        label: "NavBar 导航栏",
-        value: "",
-        description: "",
-        arrow: true
-      }, {
+      }, // {
+      //     label: "NavBar 导航栏",
+      //     value: "",
+      //     description: "",
+      //     arrow: true
+      // },
+      {
         label: "Tab 标签页",
-        value: "",
-        description: "",
-        arrow: true
-      }, {
-        label: "Tabbar 标签栏",
         value: "",
         description: "",
         arrow: true
