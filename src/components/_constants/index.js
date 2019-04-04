@@ -1,5 +1,5 @@
 export default {
-    "prod": "//", 
-    "fat" : "//",
-    "dev" : "//"
+    "server": "",
+    "devServer": "",
+    "localServer": "",
 }

@@ -232,7 +232,7 @@ async function assetsCompile() {
   ])
 }
 
-gulp.task('api', function () {
+gulp.task('api', async function () {
   rimraf.sync(`./src/components/api`)
   apiBuild().then(apis => apis.map(api => anazApis(api)))
 })
@@ -252,6 +252,7 @@ async function apiBuild() {
   return result
 }
 function anazApis(api) {
+  const { server } = minimist(process.argv.slice(2), knownOptions)
   const method = api.method
   const path = api.path
   let headers = {}
@@ -263,7 +264,8 @@ function anazApis(api) {
   //   const queryParam = api.req_query
   const dataType = api.res_body_type
   const options = {
-    url: path,
+    url: (server === 'dev' ? glob.devServer : 
+    server === "local" ? glob.localServer : (glob.server || '')) + path,
     headers: headers,
     method,
     dataType
