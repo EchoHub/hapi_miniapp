@@ -68,7 +68,7 @@ gulp.task('axml:compile', async function () {
       rename({
         extname: '.html'
       }),
-      gulpif(env === 'production', htmlmin({ collapseWhitespace: true })),
+      // gulpif(env === 'production', htmlmin({ collapseWhitespace: true })),
       rename({
         extname: '.axml'
       }),
