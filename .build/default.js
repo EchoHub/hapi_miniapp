@@ -82,8 +82,8 @@ function updateEntries() {
 }
 const { entries, axmlDirs, jsonDirs, lessDirs} = updateEntries()
 module.exports = {
-    server: "https://dataplatform.shulidata.com",
-    devServer: "http://dev-dataplatform-01.shuli.com:8080",
+    server: "",
+    devServer: "",
     localServer: "",
     entries: entries,
     common: {
