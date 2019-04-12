@@ -82,9 +82,6 @@ function updateEntries() {
 }
 const { entries, axmlDirs, jsonDirs, lessDirs} = updateEntries()
 module.exports = {
-    server: "",
-    devServer: "",
-    localServer: "",
     entries: entries,
     common: {
         srcPath: srcPath,
@@ -120,10 +117,11 @@ module.exports = {
             }
         ]
     },
-    prod: {
-
-    },
-    dev: {
-    },
+    // 生成接口地址
+    prodServer: "//",
+    // 测试接口地址 
+    testServer : "//",
+    // 开发接口地址
+    devServer : "//",
     updateEntries: updateEntries
 }

@@ -1,0 +1,983 @@
+[
+    {
+      "name": "项目管理",
+      "desc": null,
+      "add_time": 1545813314,
+      "up_time": 1545876171,
+      "index": 0,
+      "list": [
+        {
+          "_id": 3551,
+          "method": "POST",
+          "catid": 525,
+          "title": "删除项目（B端）",
+          "path": "/mch/appointment/project/del",
+          "project_id": 85,
+          "res_body_type": "json",
+          "uid": 101,
+          "add_time": 1545990234,
+          "up_time": 1546502459,
+          "__v": 0,
+          "req_body_other": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"projectId\":{\"type\":\"string\",\"description\":\"项目ID\"}}}",
+          "markdown": "",
+          "desc": "",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"object\",\"properties\":{}},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}}}",
+          "req_body_type": "json",
+          "tag": [],
+          "index": 0,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c2dc13bdb65ac574fd47983",
+              "value": "application/json",
+              "name": "Content-Type",
+              "required": "1"
+            },
+            {
+              "_id": "5c2dc13bdb65ac574fd47982",
+              "value": "",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [],
+          "query_path": {
+            "path": "/mch/appointment/project/del",
+            "params": []
+          },
+          "type": "static",
+          "status": "done",
+          "edit_uid": 0
+        },
+        {
+          "_id": 2273,
+          "method": "POST",
+          "catid": 525,
+          "title": "新增项目（B端）",
+          "path": "/mch/appointment/project/add",
+          "project_id": 85,
+          "res_body_type": "json",
+          "uid": 101,
+          "add_time": 1545813378,
+          "up_time": 1546502447,
+          "__v": 0,
+          "req_body_other": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"项目名称\"},\"logo\":{\"type\":\"string\",\"description\":\"图片\"},\"price\":{\"type\":\"string\",\"description\":\"价格\"},\"description\":{\"type\":\"string\",\"description\":\"描述\"}},\"required\":[\"name\"]}",
+          "markdown": "",
+          "desc": "",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\",\"mock\":{\"mock\":\"0\"}},\"data\":{\"type\":\"object\",\"properties\":{\"project_id\":{\"type\":\"string\",\"description\":\"项目ID\"},\"name\":{\"type\":\"string\",\"description\":\"项目名称\"},\"logo\":{\"type\":\"string\",\"description\":\"图片\"},\"price\":{\"type\":\"string\",\"description\":\"价格\"},\"description\":{\"type\":\"string\",\"description\":\"描述\"},\"sort\":{\"type\":\"string\",\"description\":\"排序\"},\"status\":{\"type\":\"string\",\"description\":\"状态：-1-删除，0-下线，1-上线\"}},\"required\":[\"project_id\",\"name\",\"sort\",\"status\"]},\"msg\":{\"type\":\"string\",\"mock\":{\"mock\":\"请求成功\"}},\"success\":{\"type\":\"boolean\",\"mock\":{\"mock\":\"true\"}}},\"required\":[\"code\",\"data\",\"msg\",\"success\"]}",
+          "req_body_type": "json",
+          "tag": [],
+          "index": 0,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c2dc12fdb65ac574fd47981",
+              "value": "application/json",
+              "name": "Content-Type",
+              "required": "1"
+            },
+            {
+              "_id": "5c2dc12fdb65ac574fd47980",
+              "desc": "",
+              "example": "",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [],
+          "query_path": {
+            "path": "/mch/appointment/project/add",
+            "params": []
+          },
+          "type": "static",
+          "status": "done",
+          "edit_uid": 0
+        },
+        {
+          "_id": 2291,
+          "method": "POST",
+          "catid": 525,
+          "title": "项目状态更新（B端）",
+          "path": "/mch/appointment/project/status/update",
+          "project_id": 85,
+          "res_body_type": "json",
+          "uid": 101,
+          "add_time": 1545814807,
+          "up_time": 1546502469,
+          "__v": 0,
+          "req_body_other": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"projectId\":{\"type\":\"string\",\"description\":\"项目ID\"},\"status\":{\"type\":\"string\",\"description\":\"状态\"}},\"required\":[\"projectId\",\"status\"]}",
+          "markdown": "",
+          "desc": "",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"object\",\"properties\":{},\"required\":[]},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}},\"required\":[\"code\",\"data\",\"msg\",\"success\"]}",
+          "req_body_type": "json",
+          "tag": [],
+          "index": 1,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c2dc145db65ac574fd47985",
+              "value": "application/json",
+              "name": "Content-Type",
+              "required": "1"
+            },
+            {
+              "_id": "5c2dc145db65ac574fd47984",
+              "desc": "",
+              "example": "",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [],
+          "query_path": {
+            "path": "/mch/appointment/project/status/update",
+            "params": []
+          },
+          "type": "static",
+          "status": "done",
+          "edit_uid": 0
+        },
+        {
+          "_id": 2282,
+          "method": "POST",
+          "catid": 525,
+          "title": "编辑项目（B端）",
+          "path": "/mch/appointment/project/update",
+          "project_id": 85,
+          "res_body_type": "json",
+          "uid": 101,
+          "add_time": 1545814292,
+          "up_time": 1546502437,
+          "__v": 0,
+          "markdown": "",
+          "desc": "",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"object\",\"properties\":{\"project_id\":{\"type\":\"string\",\"description\":\"项目ID\"},\"name\":{\"type\":\"string\",\"description\":\"项目名称\"},\"logo\":{\"type\":\"string\",\"description\":\"图片\"},\"price\":{\"type\":\"string\",\"description\":\"价格\"},\"description\":{\"type\":\"string\",\"description\":\"描述\"},\"sort\":{\"type\":\"string\",\"description\":\"排序\"},\"status\":{\"type\":\"string\",\"description\":\"状态：-1-删除，0-下线，1-上线\"}},\"required\":[\"project_id\",\"name\",\"logo\",\"sort\",\"status\"]},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}},\"required\":[\"code\",\"data\",\"msg\",\"success\"]}",
+          "req_body_type": "json",
+          "req_body_other": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"projectId\":{\"type\":\"string\",\"description\":\"项目ID\"},\"name\":{\"type\":\"string\",\"description\":\"项目名称\"},\"logo\":{\"type\":\"string\",\"description\":\"图片\"},\"price\":{\"type\":\"string\",\"description\":\"价格\"},\"description\":{\"type\":\"string\",\"description\":\"描述\"}},\"required\":[\"projectId\"]}",
+          "tag": [],
+          "index": 2,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c2dc125db65ac574fd4797f",
+              "value": "application/json",
+              "name": "Content-Type",
+              "required": "1"
+            },
+            {
+              "_id": "5c2dc125db65ac574fd4797e",
+              "desc": "",
+              "example": "",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [],
+          "query_path": {
+            "path": "/mch/appointment/project/update",
+            "params": []
+          },
+          "type": "static",
+          "status": "done",
+          "edit_uid": 0
+        },
+        {
+          "_id": 2300,
+          "method": "GET",
+          "catid": 525,
+          "title": "项目列表（C端)",
+          "path": "/appointment/project/online/list",
+          "project_id": 85,
+          "res_body_type": "json",
+          "uid": 101,
+          "add_time": 1545816122,
+          "up_time": 1546497366,
+          "__v": 0,
+          "markdown": "",
+          "desc": "",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"projectId\":{\"type\":\"string\",\"description\":\"项目ID\"},\"name\":{\"type\":\"string\",\"description\":\"项目名称\"},\"logo\":{\"type\":\"string\",\"description\":\"图片\"},\"price\":{\"type\":\"string\",\"description\":\"价格\"},\"description\":{\"type\":\"string\",\"description\":\"描述\"},\"sort\":{\"type\":\"string\",\"description\":\"排序\"},\"status\":{\"type\":\"number\",\"description\":\"状态：-1-删除，0-下线，1-上线\"}},\"required\":[\"projectId\",\"name\",\"sort\",\"status\"]}},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}},\"required\":[\"code\",\"data\",\"msg\",\"success\"]}",
+          "tag": [],
+          "index": 3,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c2dad56db65ac574fd47978",
+              "value": "",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [],
+          "query_path": {
+            "path": "/appointment/project/online/list",
+            "params": []
+          },
+          "type": "static",
+          "status": "done",
+          "edit_uid": 0
+        },
+        {
+          "_id": 2309,
+          "method": "GET",
+          "catid": 525,
+          "title": "项目列表（B端）",
+          "path": "/mch/appointment/project/list",
+          "project_id": 85,
+          "res_body_type": "json",
+          "uid": 101,
+          "add_time": 1545816419,
+          "up_time": 1546497447,
+          "__v": 0,
+          "markdown": "",
+          "desc": "",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"projectId\":{\"type\":\"string\",\"description\":\"项目ID\"},\"name\":{\"type\":\"string\",\"description\":\"项目名称\"},\"logo\":{\"type\":\"string\",\"description\":\"图片\"},\"price\":{\"type\":\"string\",\"description\":\"价格\"},\"description\":{\"type\":\"string\",\"description\":\"描述\"},\"sort\":{\"type\":\"string\",\"description\":\"排序\"},\"status\":{\"type\":\"string\",\"description\":\"状态：-1-删除，0-下线，1-上线\"}},\"required\":[\"projectId\",\"name\",\"sort\",\"status\"]}},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}},\"required\":[\"code\",\"data\",\"msg\",\"success\"]}",
+          "tag": [],
+          "index": 4,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c2dada7db65ac574fd47979",
+              "value": "",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [],
+          "query_path": {
+            "path": "/mch/appointment/project/list",
+            "params": []
+          },
+          "type": "static",
+          "status": "done",
+          "edit_uid": 0
+        }
+      ]
+    },
+    {
+      "name": "预约配置",
+      "desc": null,
+      "add_time": 1545878810,
+      "up_time": 1545878810,
+      "index": 0,
+      "list": [
+        {
+          "_id": 2471,
+          "method": "POST",
+          "catid": 557,
+          "title": "预约上门服务距离设置",
+          "path": "/mch/appointment/range",
+          "project_id": 85,
+          "res_body_type": "json",
+          "markdown": "",
+          "desc": "",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"object\",\"properties\":{}},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}}}",
+          "req_body_type": "form",
+          "uid": 85,
+          "add_time": 1545882441,
+          "up_time": 1545983160,
+          "__v": 0,
+          "tag": [],
+          "index": 0,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [
+            {
+              "_id": "5c25d4b8db65ac574fd478c7",
+              "example": "预约上门服务距离",
+              "type": "text",
+              "name": "range",
+              "required": "1"
+            }
+          ],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c25d4b8db65ac574fd478c6",
+              "value": "application/x-www-form-urlencoded",
+              "name": "Content-Type",
+              "required": "1"
+            },
+            {
+              "_id": "5c25d4b8db65ac574fd478c5",
+              "desc": "",
+              "example": "",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [],
+          "query_path": {
+            "path": "/mch/appointment/range",
+            "params": []
+          },
+          "type": "static",
+          "status": "undone",
+          "edit_uid": 0
+        },
+        {
+          "_id": 2462,
+          "method": "POST",
+          "catid": 557,
+          "title": "预约模式修改",
+          "path": "/mch/appointment/pattern",
+          "project_id": 85,
+          "res_body_type": "json",
+          "uid": 85,
+          "add_time": 1545881083,
+          "up_time": 1545983137,
+          "__v": 0,
+          "markdown": "",
+          "desc": "",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"object\",\"properties\":{}},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}}}",
+          "req_body_type": "form",
+          "tag": [],
+          "index": 0,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [
+            {
+              "_id": "5c25d4a1db65ac574fd478c4",
+              "example": "预约模式0-预约到店，1-预约上门",
+              "type": "text",
+              "name": "pattern",
+              "required": "1"
+            }
+          ],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c25d4a1db65ac574fd478c3",
+              "value": "application/x-www-form-urlencoded",
+              "name": "Content-Type",
+              "required": "1"
+            },
+            {
+              "_id": "5c25d4a1db65ac574fd478c2",
+              "desc": "",
+              "example": "",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [],
+          "query_path": {
+            "path": "/mch/appointment/pattern",
+            "params": []
+          },
+          "type": "static",
+          "status": "undone",
+          "edit_uid": 0
+        },
+        {
+          "_id": 2453,
+          "method": "GET",
+          "catid": 557,
+          "title": "预约配置查询",
+          "path": "/mch/config/appointment",
+          "project_id": 85,
+          "res_body_type": "json",
+          "uid": 85,
+          "add_time": 1545879466,
+          "up_time": 1545879847,
+          "__v": 0,
+          "markdown": "",
+          "desc": "",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"object\",\"properties\":{\"autoReceiveOrder\":{\"type\":\"boolean\",\"description\":\"是否自动接单\"},\"pattern\":{\"type\":\"number\",\"description\":\"预约模式0-预约到店，1-预约上门\"},\"range\":{\"type\":\"number\",\"description\":\"上门服务距离\"}}},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}}}",
+          "tag": [],
+          "index": 0,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c244127db65ac574fd47789",
+              "value": "",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [],
+          "query_path": {
+            "path": "/mch/config/appointment",
+            "params": []
+          },
+          "type": "static",
+          "status": "undone",
+          "edit_uid": 0
+        }
+      ]
+    },
+    {
+      "name": "订单模块（商户端）",
+      "desc": null,
+      "add_time": 1545897943,
+      "up_time": 1545898026,
+      "index": 0,
+      "list": [
+        {
+          "_id": 3164,
+          "method": "GET",
+          "title": "待处理订单列表",
+          "path": "/mch/appointment/order/unprocessed",
+          "req_body_type": "json",
+          "res_body_type": "json",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"object\",\"properties\":{\"count\":{\"type\":\"number\"},\"list\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"addrId\":{\"type\":\"number\"},\"address\":{\"type\":\"string\"},\"projectId\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"logo\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"orderId\":{\"type\":\"string\"},\"remark\":{\"type\":\"string\"},\"gmtCreated\":{\"type\":\"number\"},\"gmtModified\":{\"type\":\"number\"},\"longitude\":{\"type\":\"number\"},\"latitude\":{\"type\":\"number\"},\"locationAddr\":{\"type\":\"string\"},\"locationName\":{\"type\":\"string\"},\"price\":{\"type\":\"number\"},\"payPrice\":{\"type\":\"number\"},\"orderType\":{\"type\":\"number\"},\"status\":{\"type\":\"number\"},\"storeId\":{\"type\":\"string\"},\"storeName\":{\"type\":\"string\"},\"storePhone\":{\"type\":\"string\"},\"userId\":{\"type\":\"string\"},\"userName\":{\"type\":\"string\"},\"userPhone\":{\"type\":\"string\"},\"userSex\":{\"type\":\"number\"},\"personCount\":{\"type\":\"number\"},\"appointmentTime\":{\"type\":\"string\"}},\"required\":[\"appointmentTime\"]}}}},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}}}",
+          "project_id": 85,
+          "catid": 645,
+          "markdown": "1、订单排序按照下单时间来进行排序\n2、**_返回参数参考用户端，订单列表备注_**",
+          "desc": "<p>1、订单排序按照下单时间来进行排序<br>\n2、<strong><em>返回参数参考用户端，订单列表备注</em></strong></p>\n",
+          "uid": 109,
+          "add_time": 1545897948,
+          "up_time": 1546484785,
+          "__v": 0,
+          "tag": [],
+          "index": 0,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c2d7c31db65ac574fd47961",
+              "desc": "会话令牌",
+              "value": "",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [],
+          "query_path": {
+            "path": "/mch/appointment/order/unprocessed",
+            "params": []
+          },
+          "type": "static",
+          "status": "done",
+          "edit_uid": 0
+        },
+        {
+          "_id": 3173,
+          "method": "GET",
+          "title": "已经处理订单列表",
+          "path": "/mch/appointment/order/processed",
+          "req_body_type": "json",
+          "res_body_type": "json",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"addrId\":{\"type\":\"number\"},\"address\":{\"type\":\"string\"},\"projectId\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"logo\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"orderId\":{\"type\":\"string\"},\"remark\":{\"type\":\"string\"},\"gmtCreated\":{\"type\":\"number\"},\"gmtModified\":{\"type\":\"number\"},\"longitude\":{\"type\":\"number\"},\"latitude\":{\"type\":\"number\"},\"locationAddr\":{\"type\":\"string\"},\"locationName\":{\"type\":\"string\"},\"price\":{\"type\":\"number\"},\"payPrice\":{\"type\":\"number\"},\"orderType\":{\"type\":\"number\"},\"status\":{\"type\":\"number\"},\"storeId\":{\"type\":\"string\"},\"storeName\":{\"type\":\"string\"},\"storePhone\":{\"type\":\"string\"},\"userId\":{\"type\":\"string\"},\"userName\":{\"type\":\"string\"},\"userPhone\":{\"type\":\"string\"},\"userSex\":{\"type\":\"number\"},\"personCount\":{\"type\":\"number\"},\"appointmentTime\":{\"type\":\"string\"}},\"required\":[\"appointmentTime\"]}},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}}}",
+          "project_id": 85,
+          "catid": 645,
+          "markdown": "1、排序按照预约时间来进行排序\n2、**_返回参数参考用户端，订单列表备注_**",
+          "desc": "<p>1、排序按照预约时间来进行排序<br>\n2、<strong><em>返回参数参考用户端，订单列表备注</em></strong></p>\n",
+          "uid": 109,
+          "add_time": 1545897948,
+          "up_time": 1546585476,
+          "__v": 0,
+          "tag": [],
+          "index": 1,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c2f0584db65ac574fd4798f",
+              "desc": "会话标识",
+              "value": "",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [],
+          "query_path": {
+            "path": "/mch/appointment/order/processed",
+            "params": []
+          },
+          "type": "static",
+          "status": "done",
+          "edit_uid": 0
+        },
+        {
+          "_id": 3182,
+          "method": "GET",
+          "title": "已成功完结订单列表",
+          "path": "/mch/appointment/order/finished",
+          "req_body_type": "json",
+          "res_body_type": "json",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"addrId\":{\"type\":\"number\"},\"address\":{\"type\":\"string\"},\"projectId\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"logo\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"orderId\":{\"type\":\"string\"},\"remark\":{\"type\":\"string\"},\"gmtCreated\":{\"type\":\"number\"},\"gmtModified\":{\"type\":\"number\"},\"longitude\":{\"type\":\"number\"},\"latitude\":{\"type\":\"number\"},\"locationAddr\":{\"type\":\"string\"},\"locationName\":{\"type\":\"string\"},\"price\":{\"type\":\"number\"},\"payPrice\":{\"type\":\"number\"},\"orderType\":{\"type\":\"number\"},\"status\":{\"type\":\"number\"},\"storeId\":{\"type\":\"string\"},\"storeName\":{\"type\":\"string\"},\"storePhone\":{\"type\":\"string\"},\"userId\":{\"type\":\"string\"},\"userName\":{\"type\":\"string\"},\"userPhone\":{\"type\":\"string\"},\"userSex\":{\"type\":\"number\"},\"personCount\":{\"type\":\"number\"},\"appointmentTime\":{\"type\":\"string\"}}}},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}}}",
+          "project_id": 85,
+          "catid": 645,
+          "markdown": "1、其中排序按照预约时间来进行排序\n2、**_返回参数参考用户端，订单列表备注_**",
+          "desc": "<p>1、其中排序按照预约时间来进行排序<br>\n2、<strong><em>返回参数参考用户端，订单列表备注</em></strong></p>\n",
+          "uid": 109,
+          "add_time": 1545897949,
+          "up_time": 1545985545,
+          "__v": 0,
+          "tag": [],
+          "index": 2,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c25de09db65ac574fd47921",
+              "desc": "会话令牌",
+              "value": "",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [
+            {
+              "_id": "5c25de09db65ac574fd47920",
+              "desc": "页码，首次默认传递为0",
+              "example": "",
+              "name": "page",
+              "required": "1"
+            },
+            {
+              "_id": "5c25de09db65ac574fd4791f",
+              "desc": "分页大小",
+              "name": "limit",
+              "required": "1"
+            }
+          ],
+          "query_path": {
+            "path": "/mch/appointment/order/finished",
+            "params": []
+          },
+          "type": "static",
+          "status": "done",
+          "edit_uid": 0
+        },
+        {
+          "_id": 3191,
+          "method": "POST",
+          "title": "商户接单或拒单、确认",
+          "path": "/mch/appointment/order/accept",
+          "req_body_type": "json",
+          "res_body_type": "json",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}},\"required\":[\"code\",\"msg\",\"success\"]}",
+          "project_id": 85,
+          "catid": 645,
+          "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"orderId\":{\"type\":\"string\",\"description\":\"订单id\"},\"operate\":{\"type\":\"string\",\"description\":\"操作类型订单状态操作说明  是否接单：0-拒绝，1-接受，2-核销 \"}},\"required\":[\"orderId\",\"operate\"]}",
+          "markdown": "**_返回参数参考用户端，订单列表备注_**",
+          "desc": "<p><strong><em>返回参数参考用户端，订单列表备注</em></strong></p>\n",
+          "uid": 109,
+          "add_time": 1545897949,
+          "up_time": 1546495968,
+          "__v": 0,
+          "tag": [],
+          "index": 3,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [
+            {
+              "_id": "5c2da7e0db65ac574fd4796c",
+              "desc": "订单ID",
+              "type": "text",
+              "name": "orderId",
+              "required": "1"
+            },
+            {
+              "_id": "5c2da7e0db65ac574fd4796b",
+              "desc": "是否接单：0-拒绝，1-接受，2-核销",
+              "example": "订单状态操作说明",
+              "type": "text",
+              "name": "operate",
+              "required": "1"
+            },
+            {
+              "_id": "5c2da7e0db65ac574fd4796a",
+              "desc": "操作说明：确认拒单，确认接单，商户确认",
+              "example": "确认拒单",
+              "type": "text",
+              "name": "remark",
+              "required": "1"
+            }
+          ],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c2da7e0db65ac574fd47969",
+              "desc": "参数请求类型",
+              "value": "application/json",
+              "name": "Content-Type",
+              "required": "1"
+            },
+            {
+              "_id": "5c2da7e0db65ac574fd47968",
+              "desc": "会话令牌",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [],
+          "query_path": {
+            "path": "/mch/appointment/order/accept",
+            "params": []
+          },
+          "type": "static",
+          "status": "done",
+          "edit_uid": 0
+        }
+      ]
+    },
+    {
+      "name": "订单模块（用户端）",
+      "desc": null,
+      "add_time": 1545898270,
+      "up_time": 1545898342,
+      "index": 0,
+      "list": [
+        {
+          "_id": 3335,
+          "method": "POST",
+          "title": "提交订单",
+          "path": "/appointment/order",
+          "req_body_type": "json",
+          "res_body_type": "json",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"string\",\"description\":\"订单id\"},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}}}",
+          "project_id": 85,
+          "catid": 677,
+          "req_body_other": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"addrId\":{\"type\":\"number\"},\"projectId\":{\"type\":\"string\"},\"remark\":{\"type\":\"string\"},\"userPhone\":{\"type\":\"string\"},\"personCount\":{\"type\":\"number\"},\"appointmentTime\":{\"type\":\"string\"}},\"required\":[\"projectId\",\"appointmentTime\",\"userPhone\"]}",
+          "markdown": "",
+          "desc": "",
+          "uid": 109,
+          "add_time": 1545898272,
+          "up_time": 1545988372,
+          "__v": 0,
+          "tag": [],
+          "index": 0,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [
+            {
+              "_id": "5c25e914db65ac574fd47952",
+              "desc": "商品信息集合-前端传入字符串",
+              "type": "text",
+              "name": "commodityStr",
+              "required": "1"
+            },
+            {
+              "_id": "5c25e914db65ac574fd47951",
+              "desc": "配送金额",
+              "type": "text",
+              "name": "deliveryPrice",
+              "required": "1"
+            },
+            {
+              "_id": "5c25e914db65ac574fd47950",
+              "desc": "地址信息ID，在配送场景下必填",
+              "type": "text",
+              "name": "addrId",
+              "required": "0"
+            },
+            {
+              "_id": "5c25e914db65ac574fd4794f",
+              "desc": "收货人联系电话，在自提场景下必填",
+              "type": "text",
+              "name": "userPhone",
+              "required": "0"
+            },
+            {
+              "_id": "5c25e914db65ac574fd4794e",
+              "desc": "是否需要打包",
+              "type": "text",
+              "name": "needPkg",
+              "required": "1"
+            },
+            {
+              "_id": "5c25e914db65ac574fd4794d",
+              "desc": "包装费总价",
+              "type": "text",
+              "name": "totalPkgPrice",
+              "required": "1"
+            },
+            {
+              "_id": "5c25e914db65ac574fd4794c",
+              "desc": "订单总价(优惠价)",
+              "type": "text",
+              "name": "totalPrice",
+              "required": "1"
+            },
+            {
+              "_id": "5c25e914db65ac574fd4794b",
+              "desc": "订单备注",
+              "type": "text",
+              "name": "remark",
+              "required": "1"
+            },
+            {
+              "_id": "5c25e914db65ac574fd4794a",
+              "desc": "配送类型：0-外卖配送，1-到店自取",
+              "type": "text",
+              "name": "deliveryType",
+              "required": "1"
+            },
+            {
+              "_id": "5c25e914db65ac574fd47949",
+              "desc": "配送渠道：蜂鸟无配送，美团配送，达达配送等",
+              "type": "text",
+              "name": "deliveryChannel",
+              "required": "1"
+            },
+            {
+              "_id": "5c25e914db65ac574fd47948",
+              "desc": "预计送达(取货)时间: yyyy-MM-dd HH:mm:ss",
+              "type": "text",
+              "name": "deliveryEtd",
+              "required": "1"
+            },
+            {
+              "_id": "5c25e914db65ac574fd47947",
+              "desc": "使用场景0:外卖 1:点餐",
+              "type": "text",
+              "name": "scene",
+              "required": "1"
+            },
+            {
+              "_id": "5c25e914db65ac574fd47946",
+              "desc": "订单总价（未优惠）",
+              "type": "text",
+              "name": "orderPrice",
+              "required": "1"
+            },
+            {
+              "_id": "5c25e914db65ac574fd47945",
+              "desc": "商品价格签名",
+              "type": "text",
+              "name": "priceSign",
+              "required": "1"
+            },
+            {
+              "_id": "5c25e914db65ac574fd47944",
+              "desc": "活动优惠价格",
+              "type": "text",
+              "name": "subtraction",
+              "required": "0"
+            },
+            {
+              "_id": "5c25e914db65ac574fd47943",
+              "desc": "活动id",
+              "type": "text",
+              "name": "promotionId",
+              "required": "0"
+            }
+          ],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c25e914db65ac574fd47942",
+              "value": "application/json",
+              "name": "Content-Type",
+              "required": "1"
+            },
+            {
+              "_id": "5c25e914db65ac574fd47941",
+              "desc": "会话令牌",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [],
+          "query_path": {
+            "path": "/appointment/order",
+            "params": []
+          },
+          "type": "static",
+          "status": "done",
+          "edit_uid": 0
+        },
+        {
+          "_id": 3344,
+          "method": "GET",
+          "title": "查询订单详情",
+          "path": "/appointment/order",
+          "req_body_type": "json",
+          "res_body_type": "json",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"object\",\"properties\":{\"addrId\":{\"type\":\"number\"},\"address\":{\"type\":\"string\"},\"projectId\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"logo\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"orderId\":{\"type\":\"string\"},\"remark\":{\"type\":\"string\"},\"gmtCreated\":{\"type\":\"number\"},\"gmtModified\":{\"type\":\"number\"},\"longitude\":{\"type\":\"number\"},\"latitude\":{\"type\":\"number\"},\"locationAddr\":{\"type\":\"string\"},\"locationName\":{\"type\":\"string\"},\"price\":{\"type\":\"number\"},\"payPrice\":{\"type\":\"number\"},\"orderType\":{\"type\":\"number\"},\"status\":{\"type\":\"number\"},\"storeId\":{\"type\":\"string\"},\"storeName\":{\"type\":\"string\"},\"storePhone\":{\"type\":\"string\"},\"userId\":{\"type\":\"string\"},\"userName\":{\"type\":\"string\"},\"userPhone\":{\"type\":\"string\"},\"userSex\":{\"type\":\"number\"},\"personCount\":{\"type\":\"number\"},\"appointmentTime\":{\"type\":\"string\"},\"flows\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"fromStatus\":{\"type\":\"number\",\"description\":\"订单转变状态之前\"},\"gmtCreated\":{\"type\":\"number\",\"description\":\"订单扭转时间\"},\"toStatus\":{\"type\":\"number\",\"description\":\"订单转变状态之后\"}},\"required\":[\"fromStatus\",\"gmtCreated\",\"toStatus\"]}}}},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}}}",
+          "req_body_other": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"avatar\": {\n      \"type\": \"string\"\n    },\n    \"gender\": {\n      \"type\": \"integer\",\n      \"format\": \"int32\"\n    },\n    \"name\": {\n      \"type\": \"string\"\n    },\n    \"phone\": {\n      \"type\": \"string\"\n    },\n    \"platformId\": {\n      \"type\": \"string\"\n    },\n    \"status\": {\n      \"type\": \"integer\",\n      \"format\": \"int32\"\n    },\n    \"storeRoleUser\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"role\": {\n          \"type\": \"integer\",\n          \"format\": \"int32\"\n        },\n        \"storeId\": {\n          \"type\": \"integer\",\n          \"format\": \"int64\"\n        },\n        \"userId\": {\n          \"type\": \"integer\",\n          \"format\": \"int64\"\n        }\n      },\n      \"$$ref\": \"#/definitions/StoreRoleUserDTO\"\n    },\n    \"uid\": {\n      \"type\": \"string\"\n    },\n    \"userId\": {\n      \"type\": \"string\"\n    }\n  },\n  \"$$ref\": \"#/definitions/UserDTO\"\n}",
+          "project_id": 85,
+          "catid": 677,
+          "markdown": "返回参数参考用户端，订单列表备注",
+          "desc": "<p>返回参数参考用户端，订单列表备注</p>\n",
+          "uid": 109,
+          "add_time": 1545898272,
+          "up_time": 1545983997,
+          "__v": 0,
+          "tag": [],
+          "index": 0,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c25d7fddb65ac574fd478f9",
+              "desc": "会话令牌",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [
+            {
+              "_id": "5c25d7fddb65ac574fd478f8",
+              "desc": "订单编号",
+              "name": "orderId",
+              "required": "1"
+            }
+          ],
+          "query_path": {
+            "path": "/appointment/order",
+            "params": []
+          },
+          "type": "static",
+          "status": "done",
+          "edit_uid": 0
+        },
+        {
+          "_id": 3353,
+          "method": "POST",
+          "title": "用户取消订单",
+          "path": "/appointment/order/cancle",
+          "req_body_type": "json",
+          "res_body_type": "json",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}}}",
+          "project_id": 85,
+          "catid": 677,
+          "req_body_other": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"orderId\":{\"type\":\"string\"}},\"required\":[\"orderId\"]}",
+          "markdown": "",
+          "desc": "",
+          "uid": 109,
+          "add_time": 1545898272,
+          "up_time": 1545984468,
+          "__v": 0,
+          "tag": [],
+          "index": 0,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [
+            {
+              "_id": "5c25d9d4db65ac574fd47919",
+              "desc": "订单ID",
+              "type": "text",
+              "name": "orderId",
+              "required": "1"
+            }
+          ],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c25d9d4db65ac574fd47918",
+              "desc": "会话令牌",
+              "name": "atk",
+              "required": "1"
+            },
+            {
+              "_id": "5c25d9d4db65ac574fd47917",
+              "desc": "",
+              "example": "",
+              "value": "application/json",
+              "name": "Content-Type",
+              "required": "1"
+            }
+          ],
+          "req_query": [],
+          "query_path": {
+            "path": "/appointment/order/cancle",
+            "params": []
+          },
+          "type": "static",
+          "status": "done",
+          "edit_uid": 0
+        },
+        {
+          "_id": 3362,
+          "method": "GET",
+          "title": "订单列表(分页)",
+          "path": "/appointment/order/list",
+          "req_body_type": "json",
+          "res_body_type": "json",
+          "res_body": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"number\"},\"data\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"addrId\":{\"type\":\"number\",\"description\":\"用户地址id\"},\"address\":{\"type\":\"string\",\"description\":\"地址详情\"},\"projectId\":{\"type\":\"string\",\"description\":\"项目id\"},\"name\":{\"type\":\"string\",\"description\":\"项目名称\"},\"logo\":{\"type\":\"string\",\"description\":\"项目图片\"},\"description\":{\"type\":\"string\",\"description\":\"项目描述\"},\"orderId\":{\"type\":\"string\",\"description\":\"订单id\"},\"remark\":{\"type\":\"string\",\"description\":\"订单备注\"},\"gmtCreated\":{\"type\":\"number\",\"description\":\"订单创建时间\"},\"gmtModified\":{\"type\":\"number\",\"description\":\"订单修改时间\"},\"longitude\":{\"type\":\"number\",\"description\":\"用户经度\"},\"latitude\":{\"type\":\"number\",\"description\":\"用户纬度\"},\"locationAddr\":{\"type\":\"string\",\"description\":\"用户坐标地址\"},\"locationName\":{\"type\":\"string\",\"description\":\"用户坐标名称\"},\"price\":{\"type\":\"number\",\"description\":\"价格\"},\"payPrice\":{\"type\":\"number\",\"description\":\"实际支付价格\"},\"orderType\":{\"type\":\"number\",\"description\":\"订单类型：0-预约到店 1-预约上门\"},\"status\":{\"type\":\"number\",\"description\":\"订单状态，参考pha文档\"},\"storeId\":{\"type\":\"string\",\"description\":\"商户id\"},\"storeName\":{\"type\":\"string\",\"description\":\"商户名称\"},\"storePhone\":{\"type\":\"string\",\"description\":\"商户手机号\"},\"userId\":{\"type\":\"string\",\"description\":\"用户id\"},\"userName\":{\"type\":\"string\",\"description\":\"用户名称\"},\"userPhone\":{\"type\":\"string\",\"description\":\"用户手机号\"},\"userSex\":{\"type\":\"number\",\"description\":\"用户性别\"},\"personCount\":{\"type\":\"number\",\"description\":\"预约人数\"},\"appointmentTime\":{\"type\":\"string\",\"description\":\"预约时间\"}}}},\"msg\":{\"type\":\"string\"},\"success\":{\"type\":\"boolean\"}}}",
+          "project_id": 85,
+          "catid": 677,
+          "markdown": "",
+          "desc": "",
+          "uid": 109,
+          "add_time": 1545898272,
+          "up_time": 1545984044,
+          "__v": 0,
+          "tag": [],
+          "index": 0,
+          "api_opened": false,
+          "res_body_is_json_schema": true,
+          "req_body_form": [],
+          "req_body_is_json_schema": true,
+          "req_params": [],
+          "req_headers": [
+            {
+              "_id": "5c25d82cdb65ac574fd478ff",
+              "desc": "会话令牌",
+              "name": "atk",
+              "required": "1"
+            }
+          ],
+          "req_query": [
+            {
+              "_id": "5c25d82cdb65ac574fd478fe",
+              "desc": "分页，默认第一页为0",
+              "name": "page",
+              "required": "1"
+            },
+            {
+              "_id": "5c25d82cdb65ac574fd478fd",
+              "desc": "分页大小，支持5~20",
+              "name": "size",
+              "required": "1"
+            }
+          ],
+          "query_path": {
+            "path": "/appointment/order/list",
+            "params": []
+          },
+          "type": "static",
+          "status": "done",
+          "edit_uid": 0
+        }
+      ]
+    }
+  ]
