@@ -1,6 +1,7 @@
 {
-    "component": true,
+    "defaultTitle": "Tab标签页",
     "usingComponents": {
+        "hp-tab": "/components/hp-tab/index",
         "hp-tabitem": "/components/hp-tabitem/index"
     }
 }

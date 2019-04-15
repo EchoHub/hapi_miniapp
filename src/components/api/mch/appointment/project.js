@@ -1,6 +1,6 @@
-export function cancle(query, success, fail, complete, others) {
+export function del(query, success, fail, complete, others) {
     const app = getApp();
-    const config = Object.assign({}, {"url":"///appointment/order/cancle","headers":{"Content-Type":"application/json"},"method":"POST","dataType":"json"},{ headers: Object.assign({}, {"Content-Type":"application/json"}, { atk: query.atk})})
+    const config = Object.assign({}, {"url":"///mch/appointment/project/del","headers":{"Content-Type":"application/json","atk":""},"method":"POST","dataType":"json"},{ headers: Object.assign({}, {"Content-Type":"application/json","atk":""}, { atk: query.atk})})
     delete query.atk
     let _query = query;
     config.headers["content-type"] = config.headers["Content-Type"]
@@ -19,7 +19,7 @@ export function cancle(query, success, fail, complete, others) {
             app.checkAuth('auth_base').then(({ token = '' }) => {
             // 数据更新
             app.CONSTANTS.atk = token
-            my.request(Object.assign({}, {"url":"///appointment/order/cancle","headers":{"Content-Type":"application/json"},"method":"POST","dataType":"json"}, {data: query}, others,
+            my.request(Object.assign({}, {"url":"///mch/appointment/project/del","headers":{"Content-Type":"application/json","atk":""},"method":"POST","dataType":"json"}, {data: query}, others,
             {
                 success: responese => {
                 const data_ = responese.data || {}
@@ -51,9 +51,9 @@ export function cancle(query, success, fail, complete, others) {
     })
     return (my.httpRequest || my.request)(options)
 }
-export function list(query, success, fail, complete, others) {
+export function add(query, success, fail, complete, others) {
     const app = getApp();
-    const config = Object.assign({}, {"url":"///appointment/order/list","headers":{},"method":"GET","dataType":"json"},{ headers: Object.assign({}, {}, { atk: query.atk})})
+    const config = Object.assign({}, {"url":"///mch/appointment/project/add","headers":{"Content-Type":"application/json"},"method":"POST","dataType":"json"},{ headers: Object.assign({}, {"Content-Type":"application/json"}, { atk: query.atk})})
     delete query.atk
     let _query = query;
     config.headers["content-type"] = config.headers["Content-Type"]
@@ -72,7 +72,7 @@ export function list(query, success, fail, complete, others) {
             app.checkAuth('auth_base').then(({ token = '' }) => {
             // 数据更新
             app.CONSTANTS.atk = token
-            my.request(Object.assign({}, {"url":"///appointment/order/list","headers":{},"method":"GET","dataType":"json"}, {data: query}, others,
+            my.request(Object.assign({}, {"url":"///mch/appointment/project/add","headers":{"Content-Type":"application/json"},"method":"POST","dataType":"json"}, {data: query}, others,
             {
                 success: responese => {
                 const data_ = responese.data || {}

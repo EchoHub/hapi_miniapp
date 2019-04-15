@@ -1,3 +1,87 @@
+@tab-background: #ffffff;
+@tab__wrap-height: 88rpx;
+@tab__label-size: 32rpx;
+@tab__label-padding: 0 20rpx;
+@tab__label-color__default: #D1D3DE;
+@tab__label-color__active: #FB541C;
+@tab__label-color__active2: #5677FC;
+@tab__label-fontweight__active: 600;
+@line-height: 4rpx;
+@transition-config: transform ease .3s;
+@label-flex: 0 0 22%;
 .hp-tab {
-    
+    background: @tab-background;
+    text-align: center;
+    position: relative;
+    &__wrap {
+        flex-wrap: nowrap;
+        width: 100%;
+        height: @tab__wrap-height;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        .hp-tab__nav {
+            display: flex;
+            justify-content: space-between;
+            user-select: none;
+            position: relative;
+            background: @tab-background;
+            height: 100%;
+            -webkit-overflow-scrolling: touch;
+            transition: @transition-config;
+            .hp-tab__label {
+                line-height: @tab__wrap-height;
+                font-size: @tab__label-size;
+                padding: @tab__label-padding;
+                color: @tab__label-color__default;
+                text-align: center;
+                flex: 1;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                &.active {
+                    color: @tab__label-color__active;
+                    font-weight: @tab__label-fontweight__active;
+                }
+            }
+            .line {
+                height: @line-height;
+                display: inline-block;
+                position: absolute;
+                left: 0;
+                top: @tab__wrap-height - @line-height;
+                z-index: 99;
+                transition:  @transition-config;
+                background: @tab__label-color__active;
+            }
+
+        }
+        &.hp-tab__wrap-scrollable {
+            .hp-tab__label {
+                flex: @label-flex!important;
+            }
+        }
+    }
+    &__content {
+        padding-top: @tab__wrap-height;
+        width: 100%;
+        .hp-tabitem {
+            display: none;
+        }
+    }
+    &.hp-tab-primary {
+        .hp-tab__wrap {
+            .hp-tab__nav {
+                .hp-tab__label {
+                    &.active {
+                        color: @tab__label-color__active2;
+                    }
+                }
+                .line {
+                    background: @tab__label-color__active2;
+                }
+            }
+        }
+    }
 }

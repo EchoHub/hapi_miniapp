@@ -1,3 +1,44 @@
+.mt-20rpx {
+  margin-top: 20rpx;
+}
+.mt-40rpx {
+  margin-top: 40rpx;
+}
+.hp-h1 {
+  font-size: 64rpx;
+  font-weight: bolder;
+  margin: 20rpx 0;
+}
+.hp-h2 {
+  font-size: 56rpx;
+  font-weight: bold;
+  margin: 20rpx 0;
+}
+.hp-h3 {
+  font-size: 48rpx;
+  font-weight: 600;
+  margin: 18rpx 0;
+}
+.hp-h4 {
+  font-size: 40rpx;
+  font-weight: 600;
+  margin: 16rpx 0;
+}
+.hp-h5 {
+  font-size: 32rpx;
+  font-weight: 500;
+  margin: 14rpx 0;
+}
+.hp-h6 {
+  font-size: 28rpx;
+  font-weight: normal;
+  margin: 10rpx 0;
+}
+.hp-h7 {
+  font-size: 24rpx;
+  font-weight: lighter;
+  margin: 10rpx 0;
+}
 page {
   margin: 0;
   padding: 0;

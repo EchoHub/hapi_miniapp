@@ -1,2 +1,11 @@
-<view className="hp-tab">
+<view id="hp-tab__{{id}}" className={{className}}>
+    <view className="hp-tab__wrap{{scrollable ? ' hp-tab__wrap-scrollable' : ''}}">
+        <view className="hp-tab__nav" style={{styleCss}}>
+            <block a:for={{tabs}}>
+                <view className="hp-tab__label{{activeTab === index ? ' active': ''}}" data-index={{index}} onTap="handleTabClick">{{item.label}}</view>
+            </block>
+            <view className="line" style={{lineCss}}></view>
+        </view>
+    </view>
+    <view className="hp-tab__content"><slot></slot></view>
 </view>

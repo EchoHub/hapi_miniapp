@@ -98,19 +98,14 @@ gulp.task("build", gulp.series("clean", gulp.series(gulp.parallel(["less:compile
 })))
 gulp.task('js:compile', async function () {
   const { jsDirs } = glob['common']
-  // const { env } = minimist(process.argv.slice(2), knownOptions)
   jsDirs.map(dir => {
     return pump([
       gulp.src(dir.src),
       babel(),
-      // eslint({
-      //   configFile: './.eslintrc',
-      //   fix: true
-      // }),
-      eslint.format(),
       gulpif(env === 'production', uglify()),
       gulp.dest(dir.dest)
     ], function (err) {
+      console.log(err);
     })
   })
 })

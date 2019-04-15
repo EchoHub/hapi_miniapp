@@ -1,0 +1,17 @@
+@ellipsis-padding: 10rpx 0;
+@ellipsis-color-default: #D1D3DE;
+@ellipsis-color-active: #FB541C;
+.hp-tabitem {
+    flex: 1;
+    &_active {
+        display: inherit!important;
+    }
+    &-ellipsis {
+        padding: @ellipsis-padding;
+        color: @ellipsis-color-default;
+        font-size: 32rpx;
+        &.active {
+            color: @ellipsis-color-active;
+        }
+    }
+}

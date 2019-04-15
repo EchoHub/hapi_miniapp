@@ -1,6 +1,6 @@
-export function appointment(query, success, fail, complete, others) {
+export function list(query, success, fail, complete, others) {
     const app = getApp();
-    const config = Object.assign({}, {"url":"///mch/config/appointment","headers":{"atk":""},"method":"GET","dataType":"json"},{ headers: Object.assign({}, {"atk":""}, { atk: query.atk})})
+    const config = Object.assign({}, {"url":"///appointment/project/online/list","headers":{"atk":""},"method":"GET","dataType":"json"},{ headers: Object.assign({}, {"atk":""}, { atk: query.atk})})
     delete query.atk
     let _query = query;
     config.headers["content-type"] = config.headers["Content-Type"]
@@ -19,7 +19,7 @@ export function appointment(query, success, fail, complete, others) {
             app.checkAuth('auth_base').then(({ token = '' }) => {
             // 数据更新
             app.CONSTANTS.atk = token
-            my.request(Object.assign({}, {"url":"///mch/config/appointment","headers":{"atk":""},"method":"GET","dataType":"json"}, {data: query}, others,
+            my.request(Object.assign({}, {"url":"///appointment/project/online/list","headers":{"atk":""},"method":"GET","dataType":"json"}, {data: query}, others,
             {
                 success: responese => {
                 const data_ = responese.data || {}

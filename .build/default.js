@@ -76,6 +76,10 @@ function updateEntries() {
             {
                 src: path.resolve(srcPath, "pages/**/*.less"),
                 dest: path.join(destPath, "pages"),
+            },
+            {
+                src: path.resolve(srcPath, "assets/styles/**/*.less"),
+                dest: path.join(destPath, "pages"),
             }
         ].concat(l_componentsEntries)
     }

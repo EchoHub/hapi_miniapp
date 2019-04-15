@@ -116,7 +116,8 @@ Page(_objectSpread({
         label: "Tab 标签页",
         value: "",
         description: "",
-        arrow: true
+        arrow: true,
+        href: "/pages/home/tabPage/index"
       }]
     }, {
       title: "业务组件",

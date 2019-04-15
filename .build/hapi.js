@@ -1,9 +1,12 @@
+const gulp = require('gulp')
+const gulpif = require('gulp-if')
 const fs = require('fs')
 const path = require('path')
 const readline = require('readline')
 const minimist = require('minimist')
 const rimraf = require('rimraf')
 const mkdirp = require('mkdirp')
+const pump = require('pump')
 
 const apis = require('./../api')
 const glob = require('./default')
@@ -36,68 +39,68 @@ function HapiUtil() {
         const paths = (path.replace(/^\//, "")).split('/')
         const funcName = paths[paths.length - 1]
         const content = `export function ${funcName === 'delete' ? 'delete_1' : funcName}(query, success, fail, complete, others) {
-          const app = getApp();
-          const config = Object.assign({}, ${JSON.stringify(options)},{ headers: Object.assign({}, ${JSON.stringify(options.headers)}, { atk: query.atk})})
-          delete query.atk
-          let _query = query;
-          config.headers["content-type"] = config.headers["Content-Type"]
-          if(config.headers["content-type"] === "application/json" ) {
-            _query = JSON.stringify(_query)
-          }
-          delete config.headers["Content-Type"]
-          const _others = Object.assign({timeout: 3000}, others);
-          const options = Object.assign({}, config, {data: _query}, _others, {
-              success: resp => {
-                const data = resp.data || {}
-                if (data.code == '0') {
-                  success && success(data.data, data)
-                } else if (data.code == '50102') {
-                  // token失效 重新获取鉴权 重新调用数据
-                  app.checkAuth('auth_base').then(({ token = '' }) => {
-                    // 数据更新
-                    app.CONSTANTS.atk = token
-                    my.request(Object.assign({}, ${JSON.stringify(options)}, {data: query}, others,
-                    {
-                      success: responese => {
-                        const data_ = responese.data || {}
-                        success(data_.data, data_)
-                      },
-                      fail: fail || function(err){
-                          my.showToast({
-                              type: 'fail',
-                              content: err.msg || '系统异常,请稍后再试'
-                          })
-                      },
-                      complete: complete
-                    }
-                    ))
-                  }).catch((e) => {
-                    my.showToast({ content: '系统异常' })
-                  })
-                }else {
-                  fail(data, resp)
-                }
-              },
-              fail: fail || function(err, resp){
-                  my.showToast({
-                      type: 'fail',
-                      content: err.msg || '系统异常,请稍后再试'
-                  })
-              },
-              complete: complete,
-          })
-          return (my.httpRequest || my.request)(options)
-      }
-      `
+    const app = getApp();
+    const config = Object.assign({}, ${JSON.stringify(options)},{ headers: Object.assign({}, ${JSON.stringify(options.headers)}, { atk: query.atk})})
+    delete query.atk
+    let _query = query;
+    config.headers["content-type"] = config.headers["Content-Type"]
+    if(config.headers["content-type"] === "application/json" ) {
+    _query = JSON.stringify(_query)
+    }
+    delete config.headers["Content-Type"]
+    const _others = Object.assign({timeout: 3000}, others);
+    const options = Object.assign({}, config, {data: _query}, _others, {
+        success: resp => {
+        const data = resp.data || {}
+        if (data.code == '0') {
+            success && success(data.data, data)
+        } else if (data.code == '50102') {
+            // token失效 重新获取鉴权 重新调用数据
+            app.checkAuth('auth_base').then(({ token = '' }) => {
+            // 数据更新
+            app.CONSTANTS.atk = token
+            my.request(Object.assign({}, ${JSON.stringify(options)}, {data: query}, others,
+            {
+                success: responese => {
+                const data_ = responese.data || {}
+                success(data_.data, data_)
+                },
+                fail: fail || function(err){
+                    my.showToast({
+                        type: 'fail',
+                        content: err.msg || '系统异常,请稍后再试'
+                    })
+                },
+                complete: complete
+            }
+            ))
+            }).catch((e) => {
+            my.showToast({ content: '系统异常' })
+            })
+        }else {
+            fail(data, resp)
+        }
+        },
+        fail: fail || function(err, resp){
+            my.showToast({
+                type: 'fail',
+                content: err.msg || '系统异常,请稍后再试'
+            })
+        },
+        complete: complete,
+    })
+    return (my.httpRequest || my.request)(options)
+}
+`
         let dirPath = './src/components/api/'
-        if (paths.length - 3 >= 0) {
-            dirPath += `${paths.length - 2 === 1 ? paths.slice(0, paths.length - 2) + "/" : paths.slice(0, paths.length - 2).join('/')}`
+        if (paths.length - 2 > 0) {
+            dirPath += `${paths.slice(0, paths.length - 2).join('/')}`
         }
         mkdirp(dirPath, err => {
             if (err) console.error(err)
             else {
                 const fileName = paths.length - 2 >= 0 ? paths[paths.length - 2] : 'api'
-                fs.appendFile(`${dirPath.concat(`${fileName}`)}.js`, content, 'utf-8', error => {
+                fs.appendFile(`${dirPath.concat(`/${fileName}`)}.js`, content, 'utf-8', error => {
                     if (error) console.error(error)
                 })
             }
@@ -181,7 +184,7 @@ HapiUtil.prototype = {
         if (nameArr.length > 1) {
             filePath = nameArr.slice(0, nameArr.length - 1).join('/')
         }
-        const destPath = path.join(__dirname, `src/${type}/${filePath ? `${filePath}/${fileName}` : fileName}`)
+        const destPath = path.join(__dirname, `./../src/${type}/${filePath ? `${filePath}/${fileName}` : fileName}`)
         const hasExist = fs.existsSync(destPath);
         if (!hasExist && type === "pages") {
             const appPath = "./src/app.json";
@@ -192,7 +195,7 @@ HapiUtil.prototype = {
         }
         const start = +new Date()
         return pump([
-            gulp.src(path.join(__dirname, `src/${type}/_template/*.*`)),
+            gulp.src(path.join(__dirname, `../src/${type}/_template/*.*`)),
             gulpif(!hasExist,
                 gulp
                     .dest(destPath)
@@ -211,7 +214,7 @@ HapiUtil.prototype = {
         ])
     },
     remove: async function () {
-        const destPath = path.join(__dirname, `src/${this.name}`)
+        const destPath = path.join(__dirname, `../src/${this.name}`)
         const rl = readline.createInterface({
             input: process.stdin,
             output: process.stdout
