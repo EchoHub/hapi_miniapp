@@ -23,6 +23,12 @@ const handlers = {
         this.setData({
             activeTab4: index
         })
+    },
+    handleTabClick5(index) {
+        _My.showToast(`切换到标签 ${index + 1}`)
+        this.setData({
+            activeTab5: index
+        })
     }
 }
 export default handlers;

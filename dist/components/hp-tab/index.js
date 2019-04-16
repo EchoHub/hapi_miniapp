@@ -68,7 +68,7 @@ Component({
       const {
         dataset,
         offsetLeft
-      } = e.target;
+      } = e.currentTarget;
       const {
         index
       } = dataset;
@@ -78,6 +78,10 @@ Component({
 
     calculatePosition(selector, containerWidth, oleft, index, len) {
       _My.find(selector).boundingClientRect(data => {
+        const {
+          tabs,
+          activeTab
+        } = this.props;
         const {
           width,
           left
@@ -92,10 +96,12 @@ Component({
             transform: index === len - 1 && len > 4 ? `
                         translateX(${-moveLeft}px)` : len >= 4 && moveLeft > 0 ? `translateX(${-(moveLeft + (index < len - 1 ? width / 2 : 0))}px)` : "translateX(0)"
           },
-          lineCss: {
+          lineCss: Object.assign({
             transform: `translateX(${offsetLeft}px)`,
             width: `${width}px`
-          }
+          }, tabs[index].tabBarActiveTextColor && activeTab === index ? {
+            background: tabs[index].tabBarActiveTextColor
+          } : {})
         });
       });
     }

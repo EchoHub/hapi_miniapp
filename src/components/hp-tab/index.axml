@@ -2,9 +2,25 @@
     <view className="hp-tab__wrap{{scrollable ? ' hp-tab__wrap-scrollable' : ''}}">
         <view className="hp-tab__nav" style={{styleCss}}>
             <block a:for={{tabs}}>
-                <view className="hp-tab__label{{activeTab === index ? ' active': ''}}" data-index={{index}} onTap="handleTabClick">{{item.label}}</view>
+                <view 
+                    className="hp-tab__label{{activeTab === index ? ' active': ''}}" 
+                    data-index={{index}} 
+                    onTap="handleTabClick"
+                    >
+                        <label a:if="{{item.badgeType}}">
+                            <image a:if="{{item.badgeType === 'image'}}"
+                            className="hp-tab-icon"
+                            src="{{activeTab === index ? item.badges[1] : item.badges[0]}}"
+                            mode="scaleToFill"
+                            ></image>
+                            <label a:elif="{{item.badgeType === 'icon'}}"
+                            className="hp-tab-icon {{activeTab === index ? item.badges[1] : item.badges[0]}}"
+                            ></label>
+                        </label>
+                        <label style="{{item.tabBarActiveTextColor && activeTab === index  ? {color:item.tabBarActiveTextColor} : ''}}">{{item.label}}</label>
+                    </view>
             </block>
-            <view className="line" style={{lineCss}}></view>
+            <view className="line" style="{{lineCss}}"></view>
         </view>
     </view>
     <view className="hp-tab__content"><slot></slot></view>

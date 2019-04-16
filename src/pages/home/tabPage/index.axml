@@ -32,7 +32,7 @@
     </view>
     <view className="mt-40rpx">
         <view className="hp-h4 mt-40rpx">图标</view>
-        <view className="hp-h6 color-gray">默认主题有default、primary两种主题，分别对应红色、蓝色。</view>
+        <view className="hp-h6 color-gray">默认图标方式有两种image、icon，既可使用图标图像，也可以使用图标字体。</view>
         <hp-tab 
             className="mt-20rpx"
             tabs="{{tabs4}}"
@@ -40,6 +40,22 @@
             onTabClick="handleTabClick4"
         >
             <block a:for="{{tabs4}}">
+                <hp-tabitem isActive="{{activeTab4 === index}}" index={{index}}>
+                    <view className="tab-content">当前标签带图标, {{item.label}} 的内容</view>
+                </hp-tabitem>
+            </block>
+        </hp-tab>
+    </view>
+    <view className="mt-40rpx">
+        <view className="hp-h4 mt-40rpx">自定义激活状态字体和下划线颜色</view>
+        <view className="hp-h6 color-gray">默认主题有default、primary两种主题，分别对应红色、蓝色。</view>
+        <hp-tab 
+            className="mt-20rpx"
+            tabs="{{tabs5}}"
+            activeTab="{{activeTab5}}"
+            onTabClick="handleTabClick5"
+        >
+            <block a:for="{{tabs5}}">
                 <hp-tabitem isActive="{{activeTab4 === index}}" index={{index}}>
                     <view className="tab-content">当前标签带图标, {{item.label}} 的内容</view>
                 </hp-tabitem>

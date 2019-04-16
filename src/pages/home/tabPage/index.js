@@ -54,19 +54,45 @@ Page({
             {
                 label: "标签一",
                 badgeType: "image",
-                badges: []
-                // badgeType: 'text',
-                // badgeText: '6', 
+                badges: [
+                    "./../../../assets/static/tabs/2_default.png",
+                    "./../../../assets/static/tabs/2.png"
+                ]
             },
             {
                 label: "标签二",
                 badgeType: "image",
-                badges: []
+                badges: [
+                    "./../../../assets/static/tabs/2_default.png",
+                    "./../../../assets/static/tabs/2.png"
+                ]
+            },
+        ],
+        tabs5: [
+            {
+                label: "标签一",
+                badgeType: "image",
+                badges: [
+                    "./../../../assets/static/tabs/2_default.png",
+                    "./../../../assets/static/tabs/2.png"
+                ],
+                tabBarActiveTextColor: "#FB541C"
+            },
+            {
+                label: "标签二",
+                badgeType: "image",
+                badges: [
+                    "./../../../assets/static/tabs/1_default.png",
+                    "./../../../assets/static/tabs/1.png"
+                ],
+                tabBarActiveTextColor: "#5677FC"
             }
         ],
-        activeTab: 1,
+        activeTab: 0,
         activeTab2: 0,
-        activeTab3: 5,
+        activeTab3: 4,
+        activeTab4: 0,
+        activeTab5: 0,
     },
     onLoad(query) {},
     onShow() {
