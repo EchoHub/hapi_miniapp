@@ -28,85 +28,87 @@ function HapiUtil() {
             }
         }
         //   const queryParam = api.req_query
+        const paths = (path.replace(/^\//, "")).split('/')
+        const funcName = paths[paths.length - 1]
         const dataType = api.res_body_type
         const options = {
-            url: (server === 'test' ? glob.testServer :
-                server === "dev" ? glob.devServer : (glob.prodServer || '')) + path,
+            url:  server === "mock" ? `/mock/${paths.join("/")}.json`: 
+            ((server === 'test' ? glob.testServer :
+                server === "dev" ? glob.devServer : 
+                (glob.prodServer || '')) + path),
             headers: headers,
             method,
             dataType
         }
-        const paths = (path.replace(/^\//, "")).split('/')
-        const funcName = paths[paths.length - 1]
         const content = `export function ${funcName === 'delete' ? 'delete_1' : funcName}(query, success, fail, complete, others) {
-    const app = getApp();
-    const config = Object.assign({}, ${JSON.stringify(options)},{ headers: Object.assign({}, ${JSON.stringify(options.headers)}, { atk: query.atk})})
-    delete query.atk
-    let _query = query;
-    config.headers["content-type"] = config.headers["Content-Type"]
-    if(config.headers["content-type"] === "application/json" ) {
-    _query = JSON.stringify(_query)
-    }
-    delete config.headers["Content-Type"]
-    const _others = Object.assign({timeout: 3000}, others);
-    const options = Object.assign({}, config, {data: _query}, _others, {
-        success: resp => {
-        const data = resp.data || {}
-        if (data.code == '0') {
-            success && success(data.data, data)
-        } else if (data.code == '50102') {
-            // token失效 重新获取鉴权 重新调用数据
-            app.checkAuth('auth_base').then(({ token = '' }) => {
-            // 数据更新
-            app.CONSTANTS.atk = token
-            my.request(Object.assign({}, ${JSON.stringify(options)}, {data: query}, others,
-            {
-                success: responese => {
-                const data_ = responese.data || {}
-                success(data_.data, data_)
-                },
-                fail: fail || function(err){
-                    my.showToast({
-                        type: 'fail',
-                        content: err.msg || '系统异常,请稍后再试'
-                    })
-                },
-                complete: complete
-            }
-            ))
-            }).catch((e) => {
-            my.showToast({ content: '系统异常' })
-            })
-        }else {
-            fail(data, resp)
-        }
-        },
-        fail: fail || function(err, resp){
-            my.showToast({
-                type: 'fail',
-                content: err.msg || '系统异常,请稍后再试'
-            })
-        },
-        complete: complete,
-    })
-    return (my.httpRequest || my.request)(options)
-}
-`
+          const app = getApp();
+          const config = Object.assign({}, ${JSON.stringify(options)},{ headers: Object.assign({}, ${JSON.stringify(options.headers)}, { atk: query.atk})})
+          delete query.atk
+          let _query = query;
+          config.headers["content-type"] = config.headers["Content-Type"]
+          if(config.headers["content-type"] === "application/json" ) {
+            _query = JSON.stringify(_query)
+          }
+          delete config.headers["Content-Type"]
+          const _others = Object.assign({timeout: 3000}, others);
+          const options = Object.assign({}, config, {data: _query}, _others, {
+              success: resp => {
+                const data = resp.data || {}
+                if (data.code == '0') {
+                  success && success(data.data, data)
+                } else if (data.code == '50102') {
+                  // token失效 重新获取鉴权 重新调用数据
+                  app.checkAuth('auth_base').then(({ token = '' }) => {
+                    // 数据更新
+                    app.CONSTANTS.atk = token
+                    my.request(Object.assign({}, ${JSON.stringify(options)}, {data: query}, others,
+                    {
+                      success: responese => {
+                        const data_ = responese.data || {}
+                        success(data_.data, data_)
+                      },
+                      fail: fail || function(err){
+                          my.showToast({
+                              type: 'fail',
+                              content: err.msg || '系统异常,请稍后再试'
+                          })
+                      },
+                      complete: complete
+                    }
+                    ))
+                  }).catch((e) => {
+                    my.showToast({ content: '系统异常' })
+                  })
+                }else {
+                  fail(data, resp)
+                }
+              },
+              fail: fail || function(err, resp){
+                  my.showToast({
+                      type: 'fail',
+                      content: err.msg || '系统异常,请稍后再试'
+                  })
+              },
+              complete: complete,
+          })
+          return (my.httpRequest || my.request)(options)
+      }
+      `
         let dirPath = './src/components/api/'
-        if (paths.length - 2 > 0) {
-            dirPath += `${paths.slice(0, paths.length - 2).join('/')}`
+        if (paths.length - 3 >= 0) {
+            dirPath += `${paths.length - 2 === 1 ? paths.slice(0, paths.length - 2) + "/" : paths.slice(0, paths.length - 2).join('/')}`
         }
         mkdirp(dirPath, err => {
             if (err) console.error(err)
             else {
                 const fileName = paths.length - 2 >= 0 ? paths[paths.length - 2] : 'api'
-                fs.appendFile(`${dirPath.concat(`/${fileName}`)}.js`, content, 'utf-8', error => {
+                fs.appendFile(`${dirPath.concat(`${fileName}`)}.js`, content, 'utf-8', error => {
                     if (error) console.error(error)
                 })
             }
         })
         // 生成 mock 数据
-        let mockPath = './mock/'
+        let mockPath = './dist/mock/'
         if (paths.length > 1) mockPath += paths.slice(0, paths.length - 1).join("/")
         const fileName = paths[paths.length - 1];
         ; (new MockFactory(mockPath, fileName, api.res_body)).build()
@@ -245,7 +247,7 @@ HapiUtil.prototype = {
     },
     api: async function () {
         rimraf.sync(`./src/components/api`)
-        rimraf.sync(`./mock`)
+        rimraf.sync(`./dist/mock`)
         const apis = this.apis;
         const { index } = minimist(process.argv.slice(2), knownOptions)
         let _apis = apis
